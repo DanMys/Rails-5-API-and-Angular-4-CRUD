@@ -18,4 +18,11 @@ export class PostService {
   getPost(id: number) {
     return this.http.get(this.postsUrl + "/" + id + '.json')
   }
+
+  createPost(post: Post): Observable<Post> {
+    let headers = new Headers({'Content-Type':'application/json'});
+    let options =  new RequestOptions({headers: headers});
+    return this.http.post(this.postsUrl, JSON.stringify(post),
+      options).map((res: Response) => res.json())
+  }
 }

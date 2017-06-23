@@ -1,19 +1,18 @@
-<div class="post-list" *ngFor="let post of posts">
-  <a (click)="goToShow(post)">
-    <div>
-      {{post.title}}
-    </div>
-    <small><strong>Post ID:</strong> {{post.id}} </small>
-
-    <p>
-      <small>Last Updated: {{post.updated_at | date:'medium'}}</small>
-    </p>
-
-    <div>
-      <p>
-        {{post.description}}
-      </p>
-    </div>
-  </a>
-
+<div class="ui four stackable cards">
+  <div class="card" *ngFor="let post of posts">
+    <a (click)="goToShow(post)">
+      <div class="card-block">
+        <h3 class="card-title">
+        {{post.title}}
+      </h3>
+        <p>
+          <small>Last Updated: {{post.updated_at | date:'medium'}}</small>
+        </p>
+        <p card-text>
+          {{post.description}}
+        </p>
+        <a class="btn btn-primary">View Post</a>
+      </div>
+    </a>
+  </div>
 </div>
