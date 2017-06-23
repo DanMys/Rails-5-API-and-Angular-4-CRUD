@@ -14,4 +14,8 @@ export class PostService {
     return this.http.get(this.postsUrl)
       .map((response: Response) => <Post[]>response.json())
   }
+
+  getPost(id: number) {
+    return this.http.get(this.postsUrl + "/" + id + '.json')
+  }
 }

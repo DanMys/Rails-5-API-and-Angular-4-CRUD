@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Post } from './post';
 import { PostService } from './post.service';
@@ -11,7 +12,10 @@ import { PostService } from './post.service';
 export class PostListComponent implements OnInit {
   posts: Post[];
 
-  constructor(private postService: PostService) { }
+  constructor(
+    private postService: PostService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     let timer = Observable.timer(0, 5000);
@@ -21,6 +25,11 @@ export class PostListComponent implements OnInit {
   getPosts() {
     this.postService.getPosts()
       .subscribe(posts => this.posts = posts);
+  }
+
+  goToShow(post: Post): void {
+    let postLink = ['/posts', post.id];
+    this.router.navigate(postLink);
   }
 
 }

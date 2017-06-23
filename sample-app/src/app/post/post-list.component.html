@@ -1,17 +1,19 @@
 <div class="post-list" *ngFor="let post of posts">
-  <div>
-    {{post.title}}
-  </div>
-  <small><strong>Post ID:</strong> {{post.id}} </small>
+  <a (click)="goToShow(post)">
+    <div>
+      {{post.title}}
+    </div>
+    <small><strong>Post ID:</strong> {{post.id}} </small>
 
-  <p>
-    <small>Last Updated: {{post.updated_at | date:'medium'}}</small>
-  </p>
-
-  <div>
     <p>
-      {{post.description}}
+      <small>Last Updated: {{post.updated_at | date:'medium'}}</small>
     </p>
-  </div>
+
+    <div>
+      <p>
+        {{post.description}}
+      </p>
+    </div>
+  </a>
 
 </div>
